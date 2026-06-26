@@ -1,0 +1,58 @@
+---
+import '../styles/global.css';
+
+interface Props {
+	title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="id" class="h-full overflow-hidden bg-black">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content="Portfolio Website" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>{title}</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,400;1,700&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+	</head>
+	
+	<body class="h-full overflow-hidden flex items-center justify-center antialiased select-none p-0 m-0 bg-black text-white">
+		<div class="w-full max-w-[1920px] h-full max-h-[1080px] relative bg-black overflow-hidden flex flex-col justify-between shadow-2xl">
+			<slot />
+		</div>
+	</body>
+</html>
+
+<style is:global>
+	/* 1. DAFTARKAN FONT CUSTOM EVER LOOSER DI SINI */
+	@font-face {
+		font-family: 'Ever Looser';
+		/* Sesuaikan ekstensi formatnya jika file Anda .ttf atau .otf */
+		src: url('/fonts/EverLooser.ttf') format('truetype');
+		font-weight: normal;
+		font-style: normal;
+		font-display: swap;
+	}
+
+	:root {
+		--font-serif: 'Playfair Display', serif;
+		/* 2. GANTI VARIABEL BRUSH MENJADI EVER LOOSER */
+		--font-brush: 'Ever Looser', cursive, sans-serif;
+		--font-sans: 'Plus Jakarta Sans', sans-serif;
+	}
+
+	body {
+		font-family: var(--font-sans);
+	}
+	.font-serif-italics {
+		font-family: var(--font-serif);
+		font-style: italic;
+	}
+	.font-brush {
+		font-family: var(--font-brush);
+	}
+</style>

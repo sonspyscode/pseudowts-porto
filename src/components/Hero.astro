@@ -1,0 +1,131 @@
+---
+import { Image } from 'astro:assets';
+
+// ASET MODE 1: DESIGN PORTFOLIO (Menggunakan 2 Layer Gambar)
+import bgLift from '../assets/images/bg-lift.jpg'; 
+import fotoBadan from '../assets/images/bg-badan.png'; 
+
+// ASET MODE 2: CODE & CYBER PORTFOLIO (HANYA 1 GAMBAR BACKGROUND UTAMA)
+// Perbaikan: Import foto-badan-code dihapus karena tidak digunakan
+import bgCode from '../assets/images/bg-code.jpg'; 
+---
+
+<section class="relative h-dvh w-full flex flex-col justify-between pt-28 pb-16 md:pb-24 px-6 md:px-16 overflow-hidden bg-black">
+  
+  <div id="wrapper-mode-design" class="absolute inset-0 z-0 transition-all duration-500 opacity-100 block">
+    <div class="absolute inset-0 z-0">
+      <Image src={bgLift} alt="Latar belakang lift" quality="100" format="webp" loading="eager" class="w-full h-full object-cover object-center" />
+    </div>
+
+    <div class="absolute inset-0 flex flex-col items-center justify-center text-center z-10 pointer-events-none transform translate-y-[-170px] md:-translate-y-34">
+      <div class="relative flex flex-col items-center w-full justify-center select-none px-4">
+        <h2 class="font-serif-italics text-[2.35rem] sm:text-4xl md:text-5xl lg:text-6xl text-gray-200 tracking-wide mb-1 md:mb-2 drop-shadow-md">
+          I'm ui/ux
+        </h2>
+        <h1 class="font-brush text-[4.0rem] sm:text-7xl md:text-[8rem] lg:text-[10rem] uppercase tracking-wider text-white leading-none transform -rotate-1 drop-shadow-2xl opacity-95 flex items-center justify-center gap-2 sm:gap-16 md:gap-[14rem] mt-1 md:mt-14 md:translate-y-20">
+          <span class="transform -translate-x-[15px] md:translate-x-15 transition-transform">DESI</span>
+          <span class="transform translate-x-[32px] md:translate-x-0 transition-transform">GNER</span>
+        </h1>
+      </div>
+    </div>
+
+    <div class="absolute inset-0 z-20 pointer-events-none">
+      <Image src={fotoBadan} alt="Foto Profil Depan Teks" quality="100" format="png" loading="eager" class="w-full h-full object-cover object-center" />
+    </div>
+  </div>
+
+
+  <div id="wrapper-mode-code" class="absolute inset-0 z-0 transition-all duration-500 opacity-0 hidden">
+    <div class="absolute inset-0 z-0">
+      <Image src={bgCode} alt="Latar belakang code" quality="100" format="webp" class="w-full h-full object-cover object-center" />
+    </div>
+
+    <div class="absolute inset-0 flex flex-col items-center justify-center text-center z-10 pointer-events-none transform translate-y-[-10px] md:-translate-y-28">
+      <div class="relative flex flex-col items-center w-full justify-center select-none px-4">
+        <h2 class="font-serif-italics text-[1.2rem] sm:text-4xl md:text-5xl lg:text-6xl text-blue-400 tracking-wide mb-1 md:mb-2 drop-shadow-md uppercase">
+          code & cyber security
+        </h2>
+        <h1 class="font-brush text-[2.5rem] sm:text-7xl md:text-[8rem] lg:text-[10rem] uppercase tracking-wider text-white leading-none transform -rotate-1 drop-shadow-2xl opacity-95 flex items-center justify-center gap-2 sm:gap-16 md:gap-[14rem] mt-1 md:mt-14">
+          <span class="transform -translate-x-[32px] md:translate-x-0 transition-transform">DEVE</span>
+          <span class="transform translate-x-[32px] md:translate-x-0 transition-transform">LOPER</span>
+        </h1>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="relative w-full max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-end sm:items-end z-30 mt-auto pt-5 gap-4 sm:gap-0 bg-black/40 sm:bg-transparent p-4 sm:p-0 rounded-xl backdrop-blur-sm sm:backdrop-blur-none">
+    
+    <div class="max-w-xs md:max-w-sm text-left w-full sm:w-auto">
+      <p id="text-description" class="text-[11px] md:text-sm text-gray-400 font-light leading-normal tracking-wide m-0 transition-all duration-300">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+      </p>
+    </div>
+    
+    <div class="w-full sm:w-auto flex justify-center sm:justify-end pointer-events-auto">
+      <a href="#contact" class="w-full sm:w-auto text-center inline-block bg-blue-600 hover:bg-blue-500 text-white font-medium text-xs md:text-sm px-6 py-2.5 rounded-md transition-all duration-300 shadow-lg shadow-blue-600/20">
+        Get in touch
+      </a>
+    </div>
+
+  </div>
+
+</section>
+
+<script>
+  // Astro menjalankan ini otomatis setelah DOM siap, langsung tembak ID elemennya
+  const btnCode = document.getElementById('btn-mode-code');
+  const btnDesign = document.getElementById('btn-mode-design');
+  const wrapperDesign = document.getElementById('wrapper-mode-design');
+  const wrapperCode = document.getElementById('wrapper-mode-code');
+  const textDesc = document.getElementById('text-description');
+
+  // KUNCI PENGAMAN JEDAR: Hanya jalankan script jika KELIMA elemen di atas eksis di halaman
+  if (btnCode && btnDesign && wrapperDesign && wrapperCode && textDesc) {
+    const descDesign = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.";
+    const descCode = "Fokus pada pengembangan aplikasi web performa tinggi berskala aman. Menjelajahi dunia penetration testing, write-up kerentanan keamanan, dan optimasi arsitektur kode.";
+
+    const imgCode = btnCode.querySelector('img');
+    const imgDesign = btnDesign.querySelector('img');
+
+    // Klik Mode Code
+    btnCode.addEventListener('click', () => {
+      btnCode.classList.add('bg-blue-600', 'shadow-md');
+      if (imgCode) imgCode.classList.replace('opacity-40', 'opacity-100');
+
+      btnDesign.classList.remove('bg-blue-600', 'shadow-md');
+      if (imgDesign) imgDesign.classList.replace('opacity-100', 'opacity-40');
+
+      wrapperDesign.classList.replace('opacity-100', 'opacity-0');
+      setTimeout(() => {
+        wrapperDesign.classList.add('hidden');
+        wrapperDesign.classList.remove('block');
+        wrapperCode.classList.remove('hidden');
+        wrapperCode.classList.add('block');
+        setTimeout(() => wrapperCode.classList.replace('opacity-0', 'opacity-100'), 50);
+      }, 400);
+      
+      textDesc.textContent = descCode;
+    });
+
+    // Klik Mode Design
+    btnDesign.addEventListener('click', () => {
+      btnDesign.classList.add('bg-blue-600', 'shadow-md');
+      if (imgDesign) imgDesign.classList.replace('opacity-40', 'opacity-100');
+
+      btnCode.classList.remove('bg-blue-600', 'shadow-md');
+      if (imgCode) imgCode.classList.replace('opacity-100', 'opacity-40');
+
+      wrapperCode.classList.replace('opacity-100', 'opacity-0');
+      setTimeout(() => {
+        wrapperCode.classList.add('hidden');
+        wrapperCode.classList.remove('block');
+        wrapperDesign.classList.remove('hidden');
+        wrapperDesign.classList.add('block');
+        setTimeout(() => wrapperDesign.classList.replace('opacity-0', 'opacity-100'), 50);
+      }, 400);
+
+      textDesc.textContent = descDesign;
+    });
+  }
+</script>

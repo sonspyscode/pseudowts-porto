@@ -1,0 +1,43 @@
+---
+// src/layouts/MainLayout.astro
+import Navbar from '../components/Navbar.astro';
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const { 
+  title = "Ahmad Afiq | Digital Forensic & Web Dev", 
+  description = "Portofolio profesional Ahmad Afiq - Digital Forensic Researcher, UI/UX Designer, dan Web Developer." 
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="id" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+  </head>
+  <body class="bg-[#050505] text-white selection:bg-blue-500/30">
+    <Navbar />
+    <main class="bg-grain min-h-screen">
+      <slot />
+    </main>
+    <footer class="border-t border-white/5 py-12 px-6">
+      <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center opacity-50 text-sm">
+        <p>AFQ.LAB // Digital Forensics & Web Architecture</p>
+        <p>&copy; 2026 Ahmad Afiq</p>
+      </div>
+    </footer>
+  </body>
+</html>
