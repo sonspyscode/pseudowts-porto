@@ -1,4 +1,4 @@
-# Pseudowts Website Portofolio Astro Framework-Based 🧑‍🚀
+#Astro Framework-Based Website Portofolio 🧑‍🚀
 
 ## 🚀 Project Structure
 Inside this web project, you'll see the following folders and files:
