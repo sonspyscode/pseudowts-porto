@@ -14,7 +14,7 @@ import bgCode from '../assets/images/bg-code.jpg';
   
   <div id="wrapper-mode-design" class="absolute inset-0 z-0 transition-all duration-500 opacity-100 block">
     <div class="absolute inset-0 z-0">
-      <Image src={bgLift} alt="Latar belakang lift" quality="100" format="webp" loading="eager" class="w-full h-full object-cover object-center" />
+      <Image src={bgLift} alt="Latar belakang lift" quality="100" format="webp" loading="eager" class="w-full h-full object-cover object-center pointer-events-none select-none" />
     </div>
 
     <div class="absolute inset-0 flex flex-col items-center justify-center text-center z-10 pointer-events-none transform translate-y-[-170px] md:-translate-y-34">
@@ -30,29 +30,35 @@ import bgCode from '../assets/images/bg-code.jpg';
     </div>
 
     <div class="absolute inset-0 z-20 pointer-events-none">
-      <Image src={fotoBadan} alt="Foto Profil Depan Teks" quality="100" format="png" loading="eager" class="w-full h-full object-cover object-center" />
+      <Image src={fotoBadan} alt="Foto Profil Depan Teks" quality="100" format="png" loading="eager" class="w-full h-full object-cover object-center pointer-events-none select-none" />
     </div>
   </div>
 
 
   <div id="wrapper-mode-code" class="absolute inset-0 z-0 transition-all duration-500 opacity-0 hidden">
     <div class="absolute inset-0 z-0">
-      <Image src={bgCode} alt="Latar belakang code" quality="100" format="webp" class="w-full h-full object-cover object-center" />
+      <Image src={bgCode} alt="Latar belakang code" quality="100" format="webp" class="w-full h-full object-cover object-center pointer-events-none select-none" />
     </div>
 
-    <div class="absolute inset-0 flex flex-col items-center justify-center text-center z-10 pointer-events-none transform translate-y-[-10px] md:-translate-y-28">
-      <div class="relative flex flex-col items-center w-full justify-center select-none px-4">
-        <h2 class="font-serif-italics text-[1.2rem] sm:text-4xl md:text-5xl lg:text-6xl text-blue-400 tracking-wide mb-1 md:mb-2 drop-shadow-md uppercase">
-          code & cyber security
+    <div class="absolute inset-0 flex flex-col items-start justify-center text-left z-10 pointer-events-none transform translate-y-[-20px] md:-translate-y-20 pl-6 md:pl-24 w-full max-w-7xl mx-auto">
+      <div class="relative flex flex-col items-start w-full select-none gap-0 md:gap-2">
+        
+        <div class="font-code text-sm translate-y-5 lg:translate-y-10 sm:text-base md:text-xl text-green-400 tracking-mono opacity-90 flex items-center gap-2">
+          <span class="animate-pulse text-[1.0rem] md:text-[1.5rem]">~$</span>
+          <span class="animate-pulse text-[1.5rem] md:text-[2.0rem]">whoami</span>
+        </div>
+        
+        <h2 class="font-code-b text-[2.2rem] sm:text-5xl md:text-[4.5rem] lg:text-[4.5rem] text-gray-200 tracking-tight drop-shadow-md capitalize leading-tight mt-4 md:mt-6">
+          Digital forensic
         </h2>
-        <h1 class="font-brush text-[2.5rem] sm:text-7xl md:text-[8rem] lg:text-[10rem] uppercase tracking-wider text-white leading-none transform -rotate-1 drop-shadow-2xl opacity-95 flex items-center justify-center gap-2 sm:gap-16 md:gap-[14rem] mt-1 md:mt-14">
-          <span class="transform -translate-x-[32px] md:translate-x-0 transition-transform">DEVE</span>
-          <span class="transform translate-x-[32px] md:translate-x-0 transition-transform">LOPER</span>
+        
+        <h1 class="font-code-b -translate-y-3 lg:-translate-y-5 text-[2.8rem] sm:text-6xl md:text-[6rem] lg:text-[4.5rem] text-gray-200 tracking-tight drop-shadow-md capitalize leading-none mt-1">
+          researcher
         </h1>
+        
       </div>
     </div>
   </div>
-
 
   <div class="relative w-full max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-end sm:items-end z-30 mt-auto pt-5 gap-4 sm:gap-0 bg-black/40 sm:bg-transparent p-4 sm:p-0 rounded-xl backdrop-blur-sm sm:backdrop-blur-none">
     
@@ -64,7 +70,7 @@ import bgCode from '../assets/images/bg-code.jpg';
     
     <div class="w-full sm:w-auto flex justify-center sm:justify-end pointer-events-auto">
       <a href="#contact" class="w-full sm:w-auto text-center inline-block bg-blue-600 hover:bg-blue-500 text-white font-medium text-xs md:text-sm px-6 py-2.5 rounded-md transition-all duration-300 shadow-lg shadow-blue-600/20">
-        Get in touch
+        Kenalan Yuk!
       </a>
     </div>
 
@@ -73,27 +79,35 @@ import bgCode from '../assets/images/bg-code.jpg';
 </section>
 
 <script>
-  // Astro menjalankan ini otomatis setelah DOM siap, langsung tembak ID elemennya
   const btnCode = document.getElementById('btn-mode-code');
   const btnDesign = document.getElementById('btn-mode-design');
+  const indicator = document.getElementById('squishy-indicator');
+  
   const wrapperDesign = document.getElementById('wrapper-mode-design');
   const wrapperCode = document.getElementById('wrapper-mode-code');
   const textDesc = document.getElementById('text-description');
 
-  // KUNCI PENGAMAN JEDAR: Hanya jalankan script jika KELIMA elemen di atas eksis di halaman
-  if (btnCode && btnDesign && wrapperDesign && wrapperCode && textDesc) {
-    const descDesign = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.";
-    const descCode = "Fokus pada pengembangan aplikasi web performa tinggi berskala aman. Menjelajahi dunia penetration testing, write-up kerentanan keamanan, dan optimasi arsitektur kode.";
+  if (btnCode && btnDesign && indicator && wrapperDesign && wrapperCode && textDesc) {
+    const descDesign = "Yooooo! Saya gemar memahami user app dari pada diri sendiri. Melalui riset dan perancangan desain, saya membantu mengembangkan solusi teknologi yang estetik, fungsional dan user-centric.";
+    const descCode = "Halo! Saya gemar memecahkan teka-teki kompleks di dunia digital. Melalui riset forensik, saya membantu menjembatani celah antara insiden keamanan siber dan penegakan hukum digital yang akurat.";
 
     const imgCode = btnCode.querySelector('img');
     const imgDesign = btnDesign.querySelector('img');
 
-    // Klik Mode Code
-    btnCode.addEventListener('click', () => {
-      btnCode.classList.add('bg-blue-600', 'shadow-md');
-      if (imgCode) imgCode.classList.replace('opacity-40', 'opacity-100');
+    // Default posisi: Design Aktif (geser ke kanan 28px)
+    indicator.style.transform = 'translateX(28px)';
 
-      btnDesign.classList.remove('bg-blue-600', 'shadow-md');
+    // KLIK MODE CODE AKTIF (Meluncur ke KIRI)
+    btnCode.addEventListener('click', () => {
+      // Kunci Efek: Poros di kanan, melar horizontal memanjang, lalu mengempis kembali di tujuan
+      indicator.style.transformOrigin = 'right center';
+      indicator.style.transform = 'translateX(0px) scaleX(1.4)';
+      
+      setTimeout(() => {
+        indicator.style.transform = 'translateX(0px) scaleX(1)';
+      }, 180);
+
+      if (imgCode) imgCode.classList.replace('opacity-40', 'opacity-100');
       if (imgDesign) imgDesign.classList.replace('opacity-100', 'opacity-40');
 
       wrapperDesign.classList.replace('opacity-100', 'opacity-0');
@@ -103,17 +117,22 @@ import bgCode from '../assets/images/bg-code.jpg';
         wrapperCode.classList.remove('hidden');
         wrapperCode.classList.add('block');
         setTimeout(() => wrapperCode.classList.replace('opacity-0', 'opacity-100'), 50);
-      }, 400);
+      }, 350);
       
       textDesc.textContent = descCode;
     });
 
-    // Klik Mode Design
+    // KLIK MODE DESIGN AKTIF (Meluncur ke KANAN)
     btnDesign.addEventListener('click', () => {
-      btnDesign.classList.add('bg-blue-600', 'shadow-md');
-      if (imgDesign) imgDesign.classList.replace('opacity-40', 'opacity-100');
+      // Kunci Efek: Poros di kiri, melar horizontal memanjang, lalu mengempis kembali di tujuan
+      indicator.style.transformOrigin = 'left center';
+      indicator.style.transform = 'translateX(28px) scaleX(1.4)';
+      
+      setTimeout(() => {
+        indicator.style.transform = 'translateX(28px) scaleX(1)';
+      }, 180);
 
-      btnCode.classList.remove('bg-blue-600', 'shadow-md');
+      if (imgDesign) imgDesign.classList.replace('opacity-40', 'opacity-100');
       if (imgCode) imgCode.classList.replace('opacity-100', 'opacity-40');
 
       wrapperCode.classList.replace('opacity-100', 'opacity-0');
@@ -123,7 +142,7 @@ import bgCode from '../assets/images/bg-code.jpg';
         wrapperDesign.classList.remove('hidden');
         wrapperDesign.classList.add('block');
         setTimeout(() => wrapperDesign.classList.replace('opacity-0', 'opacity-100'), 50);
-      }, 400);
+      }, 350);
 
       textDesc.textContent = descDesign;
     });
