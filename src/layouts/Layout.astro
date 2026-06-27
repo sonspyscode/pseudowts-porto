@@ -56,6 +56,15 @@ const { title } = Astro.props;
 		font-display: swap;
 	}
 
+		@font-face {
+		font-family: 'Poppins';
+		/* Sesuaikan ekstensi formatnya jika file Anda .ttf atau .otf */
+		src: url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap') format('truetype');
+		font-weight: bold;
+		font-style: normal;
+		font-display: swap;
+	}
+
 	:root {
 		--font-serif: 'Playfair Display', serif;
 		/* 2. GANTI VARIABEL BRUSH MENJADI EVER LOOSER */
@@ -63,6 +72,7 @@ const { title } = Astro.props;
 		--font-sans: 'Plus Jakarta Sans', sans-serif;
 		--font-code: 'Ari-w9500', cursive, sans-serif;
 		--font-code-b: 'Ari-w9500-bold', cursive, sans-serif;
+		--font-poppins: 'Poppins', sans-serif;
 	}
 
 	body {
@@ -80,5 +90,8 @@ const { title } = Astro.props;
 	}
 	.font-code-b {
 		font-family: var(--font-code-b);
+	}
+	.font-poppins {
+		font-family: var(--font-poppins);
 	}
 </style>

@@ -1,0 +1,89 @@
+---
+// src/pages/design.astro
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+
+// Data Dummy untuk Project Desain Anda (Bisa Anda sesuaikan nanti)
+const designProjects = [
+  {
+    title: "E-Commerce Mobile App UI/UX",
+    category: "Mobile App / UI/UX",
+    image: "/images/project-ecommerce.jpg", // Taruh aset foto Anda di folder public/images/
+    description: "Perancangan antarmuka pengguna aplikasi belanja online yang fokus pada konversi dan kenyamanan navigasi satu tangan."
+  },
+  {
+    title: "Rebranding Identity - Tech StartUp",
+    category: "Visual Branding",
+    image: "/images/project-branding.jpg",
+    description: "Eksplorasi visual logogram, tipografi, dan panduan identitas brand baru untuk perusahaan keamanan siber."
+  },
+  {
+    title: "Digital Art & Illustration Pack",
+    category: "Visual & Concept Art",
+    image: "/images/project-illustration.jpg",
+    description: "Kumpulan ilustrasi bertema futuristik siber untuk kebutuhan aset web interaktif."
+  },
+    {
+    title: "Digital Art & Illustration Pack",
+    category: "Visual & Concept Art",
+    image: "/images/project-illustration.jpg",
+    description: "Kumpulan ilustrasi bertema futuristik siber untuk kebutuhan aset web interaktif."
+  },
+    {
+    title: "Digital Art & Illustration Pack",
+    category: "Visual & Concept Art",
+    image: "/images/project-illustration.jpg",
+    description: "Kumpulan ilustrasi bertema futuristik siber untuk kebutuhan aset web interaktif."
+  },
+    {
+    title: "Digital Art & Illustration Pack",
+    category: "Visual & Concept Art",
+    image: "/images/project-illustration.jpg",
+    description: "Kumpulan ilustrasi bertema futuristik siber untuk kebutuhan aset web interaktif."
+  }
+];
+---
+
+<Layout title="Design Portfolio">
+  <div class="min-h-screen w-full bg-slate-950 text-slate-100 overflow-y-auto scroll-smooth">
+    
+    <Navbar />
+
+    <main class="max-w-7xl mx-auto pt-32 pb-24 px-6 md:px-16 space-y-16">
+      
+      <section class="text-center max-w-2xl mx-auto space-y-4">
+        <h1 class="font-poppins md:text-5xl font-bold tracking-[-5px] bg-gradient-to-r text-slate-100 bg-clip-text">
+          Design Showcase
+        </h1>
+        <p class="text-slate-400 text-sm md:text-base">
+          Eksplorasi visual dan solusi antarmuka digital yang dirancang untuk memecahkan masalah.
+        </p>
+      </section>
+
+      <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        {designProjects.map((project) => (
+          <div class="group bg-zinc-900/40 border border-zinc-800/80 rounded-2xl overflow-hidden hover:border-zinc-700 transition-all duration-300">
+            <div class="aspect-video bg-zinc-800 overflow-hidden relative">
+              <div class="w-full h-full bg-gradient-to-tr from-zinc-900 to-zinc-800 flex items-center justify-center text-xs text-zinc-500">
+                Mockup Preview Image
+              </div>
+              <span class="absolute top-3 left-3 bg-black/60 backdrop-blur-md text-[10px] font-bold tracking-wider text-blue-400 uppercase px-2.5 py-1 rounded-md border border-fuchsia-500/20">
+                {project.category}
+              </span>
+            </div>
+            
+            <div class="p-5 space-y-2">
+              <h3 class="font-bold text-lg text-zinc-200 group-hover:text-white transition-colors">
+                {project.title}
+              </h3>
+              <p class="text-xs text-zinc-400 leading-relaxed">
+                Studi kasus komprehensif mengenai riset, interaksi, dan perancangan aset visual produk.
+              </p>
+            </div>
+          </div>
+        ))}
+      </section>
+
+    </main>
+  </div>
+</Layout>

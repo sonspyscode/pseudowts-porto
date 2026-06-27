@@ -35,7 +35,7 @@ import bgCode from '../assets/images/bg-code.jpg';
   </div>
 
 
-  <div id="wrapper-mode-code" class="absolute inset-0 z-0 transition-all duration-500 opacity-0 hidden">
+  <div id="wrapper-mode-code" class="absolute inset-0 z-0 transition-all duration-500 opacity-0">
     <div class="absolute inset-0 z-0">
       <Image src={bgCode} alt="Latar belakang code" quality="100" format="webp" class="w-full h-full object-cover object-center pointer-events-none select-none" />
     </div>
@@ -68,11 +68,13 @@ import bgCode from '../assets/images/bg-code.jpg';
       </p>
     </div>
     
-    <div class="w-full sm:w-auto flex justify-center sm:justify-end pointer-events-auto">
-      <a href="#contact" class="w-full sm:w-auto text-center inline-block bg-blue-600 hover:bg-blue-500 text-white font-medium text-xs md:text-sm px-6 py-2.5 rounded-md transition-all duration-300 shadow-lg shadow-blue-600/20">
+    <button class="bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-bold py-1 px-2 rounded-[6.0px] 
+                  hover:from-cyan-600 hover:to-blue-600 transition shadow-lg
+                      hover:shadow-xl hover: -translate-1 hover:scale-105 active:scale-95">
+      <a href="#contact" class="w-full sm:w-auto text-center inline-block text-white font-medium text-xs md:text-sm px-6 py-2.5 rounded-md transition-all duration-300">
         Kenalan Yuk!
       </a>
-    </div>
+    </button>
 
   </div>
 
@@ -83,26 +85,23 @@ import bgCode from '../assets/images/bg-code.jpg';
   const btnDesign = document.getElementById('btn-mode-design');
   const indicator = document.getElementById('squishy-indicator');
   
+  // Ambil elemen pembungkus konten halaman Anda jika ada di page design
   const wrapperDesign = document.getElementById('wrapper-mode-design');
   const wrapperCode = document.getElementById('wrapper-mode-code');
   const textDesc = document.getElementById('text-description');
 
-  if (btnCode && btnDesign && indicator && wrapperDesign && wrapperCode && textDesc) {
-    const descDesign = "Yooooo! Saya gemar memahami user app dari pada diri sendiri. Melalui riset dan perancangan desain, saya membantu mengembangkan solusi teknologi yang estetik, fungsional dan user-centric.";
-    const descCode = "Halo! Saya gemar memecahkan teka-teki kompleks di dunia digital. Melalui riset forensik, saya membantu menjembatani celah antara insiden keamanan siber dan penegakan hukum digital yang akurat.";
-
+  if (btnCode && btnDesign && indicator) {
     const imgCode = btnCode.querySelector('img');
     const imgDesign = btnDesign.querySelector('img');
 
-    // Default posisi: Design Aktif (geser ke kanan 28px)
+    // KUNCI UTAMA: Geser kotak biru langsung ke posisi Pentool saat halaman design dimuat
     indicator.style.transform = 'translateX(28px)';
 
-    // KLIK MODE CODE AKTIF (Meluncur ke KIRI)
+    // ==================== JIKA USER KLIK CODE MODE (Kembali ke halaman utama/mode code) ====================
     btnCode.addEventListener('click', () => {
-      // Kunci Efek: Poros di kanan, melar horizontal memanjang, lalu mengempis kembali di tujuan
+      // Jalankan efek squishy membal ke kiri
       indicator.style.transformOrigin = 'right center';
       indicator.style.transform = 'translateX(0px) scaleX(1.4)';
-      
       setTimeout(() => {
         indicator.style.transform = 'translateX(0px) scaleX(1)';
       }, 180);
@@ -110,41 +109,21 @@ import bgCode from '../assets/images/bg-code.jpg';
       if (imgCode) imgCode.classList.replace('opacity-40', 'opacity-100');
       if (imgDesign) imgDesign.classList.replace('opacity-100', 'opacity-40');
 
-      wrapperDesign.classList.replace('opacity-100', 'opacity-0');
-      setTimeout(() => {
-        wrapperDesign.classList.add('hidden');
-        wrapperDesign.classList.remove('block');
-        wrapperCode.classList.remove('hidden');
-        wrapperCode.classList.add('block');
-        setTimeout(() => wrapperCode.classList.replace('opacity-0', 'opacity-100'), 50);
-      }, 350);
-      
-      textDesc.textContent = descCode;
+      // Jika tombol ini berada di halaman terpisah, Anda bisa mengarahkan user kembali ke Beranda mode Code:
+      // window.location.href = "/?mode=code";
     });
 
-    // KLIK MODE DESIGN AKTIF (Meluncur ke KANAN)
+    // ==================== JIKA USER KLIK DESIGN MODE ====================
     btnDesign.addEventListener('click', () => {
-      // Kunci Efek: Poros di kiri, melar horizontal memanjang, lalu mengempis kembali di tujuan
+      // Jalankan efek squishy tetap di posisi kanan (Pentool)
       indicator.style.transformOrigin = 'left center';
       indicator.style.transform = 'translateX(28px) scaleX(1.4)';
-      
       setTimeout(() => {
         indicator.style.transform = 'translateX(28px) scaleX(1)';
       }, 180);
 
       if (imgDesign) imgDesign.classList.replace('opacity-40', 'opacity-100');
       if (imgCode) imgCode.classList.replace('opacity-100', 'opacity-40');
-
-      wrapperCode.classList.replace('opacity-100', 'opacity-0');
-      setTimeout(() => {
-        wrapperCode.classList.add('hidden');
-        wrapperCode.classList.remove('block');
-        wrapperDesign.classList.remove('hidden');
-        wrapperDesign.classList.add('block');
-        setTimeout(() => wrapperDesign.classList.replace('opacity-0', 'opacity-100'), 50);
-      }, 350);
-
-      textDesc.textContent = descDesign;
     });
   }
 </script>
